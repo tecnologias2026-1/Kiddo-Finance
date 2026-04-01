@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logros y Recompensas - Kiddo Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-full"><h2>Kiddo Finance</h2><span class="wireframe-label">Wireframe</span></div>
+        <div class="logo-icon">KF</div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span><span class="nav-text">Dashboard</span></a>
+        <a href="perfil.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-text">Perfil</span></a>
+        <a href="movimientos.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span><span class="nav-text">Movimientos</span></a>
+        <a href="metas.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="nav-text">Metas</span></a>
+        <a href="historial.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="nav-text">Historial</span></a>
+        <a href="logros.html" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="nav-text">Logros</span></a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="login.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span><span class="nav-text">Cerrar Sesión</span></a>
+        <button class="sidebar-toggle" id="sidebarToggle"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></span><span class="toggle-text">Contraer</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>Logros y Recompensas</h1>
+          <p class="subtitle">RF10: Logros obtenidos</p>
+        </div>
+      </div>
+
+      <!-- Progreso -->
+      <div class="card progress-card">
+        <div class="progress-info">
+          <h3>Tu Progreso</h3>
+          <p>Has desbloqueado 0 de 5 logros</p>
+        </div>
+        <div class="progress-ring">0/5</div>
+      </div>
+
+      <!-- Badges -->
+      <div class="badges-grid">
+        <div class="card badge-item">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div class="badge-info">
+            <h4>Primera Meta</h4>
+            <p>Crea tu primera meta de ahorro</p>
+          </div>
+        </div>
+
+        <div class="card badge-item">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="badge-info">
+            <h4>Ahorro Inicial</h4>
+            <p>Registra tu primer ingreso</p>
+          </div>
+        </div>
+
+        <div class="card badge-item">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="badge-info">
+            <h4>Gastador Consciente</h4>
+            <p>Registra tu primer gasto</p>
+          </div>
+        </div>
+
+        <div class="card badge-item">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="badge-info">
+            <h4>Meta Cumplida</h4>
+            <p>Completa tu primera meta</p>
+          </div>
+        </div>
+
+        <div class="card badge-item">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="badge-info">
+            <h4>Ahorrador Experto</h4>
+            <p>Alcanza $100 en ahorros</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="logros-cta">
+        ¡Comienza a usar la app para desbloquear logros!
+      </div>
+    </main>
+
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
