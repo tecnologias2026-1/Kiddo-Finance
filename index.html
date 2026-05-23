@@ -3,44 +3,845 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiddo Finance - Finanzas inteligentes para los más pequeños</title>
+  <title>Kiddo Finance · Finanzas para los más pequeños</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* ── LANDING-SPECIFIC OVERRIDES ─────────────────────── */
+
+    /* Navbar */
+    .landing-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: var(--text);          /* azul oscuro = --text */
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      gap: 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.125rem;
+      color: #fff;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-brand svg { stroke: #fff; }
+
+    .beta-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      background: rgba(255,255,255,.18);
+      color: rgba(255,255,255,.85);
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.65);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions { display: flex; gap: 10px; }
+
+    .btn-nav-outline {
+      padding: 9px 20px;
+      border: 1.5px solid rgba(255,255,255,.3);
+      border-radius: var(--radius);
+      color: rgba(255,255,255,.85);
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      background: transparent;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-nav-outline:hover {
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      border-color: rgba(255,255,255,.6);
+    }
+
+    .btn-nav-solid {
+      padding: 9px 20px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      border: none;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(91,79,232,.4);
+    }
+
+    .btn-nav-solid:hover { opacity: .9; transform: translateY(-1px); }
+
+    .mobile-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--text);
+      color: #fff;
+      padding: 72px 48px 88px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(91,79,232,.25) 0%, transparent 70%);
+      top: -150px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,107,107,.12) 0%, transparent 70%);
+      bottom: -80px; left: 100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      gap: 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 18px;
+      background: rgba(255,217,61,.12);
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.8px;
+      border: 1px solid rgba(255,217,61,.25);
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 .highlight { color: var(--accent); }
+
+    .hero-text p {
+      color: rgba(255,255,255,.7);
+      font-size: 1.0625rem;
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons { display: flex; gap: 12px; }
+
+    .btn-hero-primary {
+      padding: 14px 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9375rem;
+      border: none;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 20px rgba(91,79,232,.45);
+    }
+
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(91,79,232,.55); }
+
+    .btn-hero-outline {
+      padding: 14px 28px;
+      border: 1.5px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.85);
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      background: transparent;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-hero-outline:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5); }
+
+    /* Mockup */
+    .hero-mockup {
+      flex-shrink: 0;
+      width: 300px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      backdrop-filter: blur(12px);
+    }
+
+    .mockup-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .mockup-dot {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+    }
+
+    .mockup-line-sm {
+      flex: 1;
+      height: 8px;
+      background: rgba(255,255,255,.1);
+      border-radius: 4px;
+    }
+
+    .mockup-square {
+      width: 30px; height: 30px;
+      border-radius: var(--radius-sm);
+      background: var(--primary);
+      opacity: .7;
+    }
+
+    .mockup-card-dark {
+      background: rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mockup-line-lg {
+      height: 14px;
+      width: 65%;
+      background: rgba(255,255,255,.22);
+      border-radius: 4px;
+    }
+
+    .mockup-line-md {
+      height: 8px;
+      width: 45%;
+      background: rgba(255,255,255,.12);
+      border-radius: 4px;
+    }
+
+    .mockup-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .mockup-card-sm {
+      flex: 1;
+      height: 50px;
+      background: rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    .mockup-list { display: flex; flex-direction: column; gap: 8px; }
+
+    .mockup-list-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+    }
+
+    .mockup-circle {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      flex-shrink: 0;
+    }
+
+    .mockup-list-item .mockup-line-md { flex: 1; width: auto; }
+
+    /* Stats */
+    .stats-section {
+      display: flex;
+      justify-content: center;
+      gap: 72px;
+      padding: 52px 48px;
+      background: #fff;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-item .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-item .stat-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Features */
+    .features-section {
+      padding: 72px 48px;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 1.2px;
+      margin-bottom: 14px;
+    }
+
+    .features-section h2,
+    .steps-section h2,
+    .audience-section h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .features-section > p,
+    .steps-section > p {
+      color: var(--text-secondary);
+      margin-bottom: 52px;
+      font-size: 1rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      text-align: left;
+      padding: 24px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      transition: all .22s var(--ease);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .feature-icon {
+      width: 44px; height: 44px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .feature-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--primary);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .feature-card p {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Steps */
+    .steps-section {
+      padding: 72px 48px;
+      text-align: center;
+      background: var(--text);
+      color: #fff;
+    }
+
+    .steps-section h2 { color: #fff; }
+    .steps-section > p { color: rgba(255,255,255,.65); }
+
+    .steps-section .section-tag {
+      background: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.8);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-lg);
+      padding: 32px 20px;
+      transition: all .22s var(--ease);
+    }
+
+    .step-card:hover {
+      background: rgba(255,255,255,.1);
+      transform: translateY(-4px);
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .step-card p {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,.6);
+      line-height: 1.6;
+    }
+
+    /* Audience */
+    .audience-section {
+      padding: 72px 48px;
+      text-align: center;
+      background: var(--bg);
+    }
+
+    .audience-section > p {
+      color: var(--text-secondary);
+      margin-bottom: 52px;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .audience-card {
+      text-align: left;
+      padding: 26px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      transition: all .22s var(--ease);
+    }
+
+    .audience-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .audience-icon {
+      width: 44px; height: 44px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      color: var(--primary);
+    }
+
+    .audience-icon svg { stroke: var(--primary); }
+
+    .audience-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      margin-bottom: 8px;
+    }
+
+    .audience-card > p {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .audience-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .audience-tag {
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 80px 48px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, #7C70EE 50%, var(--primary-dark) 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,.06);
+      border-radius: 50%;
+      top: -150px; right: -100px;
+    }
+
+    .cta-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      position: relative; z-index: 1;
+    }
+
+    .cta-icon svg { stroke: #fff; }
+
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.875rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      position: relative; z-index: 1;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,.75);
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.9375rem;
+      position: relative; z-index: 1;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+
+    .btn-cta-primary {
+      padding: 14px 28px;
+      background: #fff;
+      color: var(--primary);
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9375rem;
+      border: none;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-cta-primary:hover { opacity: .95; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+
+    .btn-cta-outline {
+      padding: 14px 28px;
+      border: 1.5px solid rgba(255,255,255,.35);
+      color: rgba(255,255,255,.9);
+      border-radius: var(--radius);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      transition: all .2s;
+    }
+
+    .btn-cta-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); }
+
+    /* Footer */
+    .landing-footer {
+      background: var(--text);
+      padding: 44px 48px 24px;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand-col { max-width: 300px; }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: #fff;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand svg { stroke: #fff; }
+
+    .footer-tagline {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.6;
+    }
+
+    .footer-links-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-col a {
+      color: rgba(255,255,255,.5);
+      font-size: 0.8125rem;
+      transition: color .2s;
+    }
+
+    .footer-links-col a:hover { color: rgba(255,255,255,.9); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,.35);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-local { display: flex; align-items: center; gap: 6px; }
+
+    .green-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #34D399;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero { padding: 52px 32px 72px; }
+      .hero h1 { font-size: 2.25rem; }
+      .hero-content { flex-direction: column; text-align: center; }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+      .hero-mockup { width: 280px; }
+      .stats-section { gap: 48px; padding: 40px 32px; }
+      .features-section,
+      .steps-section,
+      .audience-section { padding: 56px 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .landing-nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .nav-actions { display: none; }
+      .mobile-menu { display: block; }
+
+      .landing-nav.nav-open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 56px; left: 0; right: 0;
+        background: var(--text);
+        padding: 20px 24px;
+        gap: 14px;
+        z-index: 99;
+      }
+
+      .landing-nav.nav-open .nav-actions {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: auto; left: 0; right: 0;
+        background: var(--text);
+        padding: 0 24px 20px;
+        z-index: 99;
+      }
+
+      .hero { padding: 44px 20px 60px; }
+      .hero h1 { font-size: 1.875rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .hero-mockup { width: 260px; }
+
+      .stats-section { gap: 28px; padding: 32px 20px; flex-wrap: wrap; justify-content: center; }
+
+      .features-section,
+      .steps-section,
+      .audience-section,
+      .cta-section { padding: 44px 20px; }
+
+      .features-grid,
+      .steps-grid,
+      .audience-grid { grid-template-columns: 1fr; }
+
+      .cta-section h2 { font-size: 1.5rem; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+
+      .footer-content { flex-direction: column; gap: 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .landing-footer { padding: 32px 20px 20px; }
+    }
+  </style>
 </head>
-<body class="landing-page">
+<body class="landing-page" style="background:var(--bg);">
 
   <!-- Navbar -->
-  <nav class="landing-nav">
+  <nav class="landing-nav" id="landingNav">
     <span class="nav-brand">
-      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/><path d="M2 9.5a.5.5 0 1 0 1 0 .5.5 0 1 0-1 0"/></svg>
+      <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/>
+        <path d="M2 9.5a.5.5 0 1 0 1 0 .5.5 0 1 0-1 0"/>
+      </svg>
       Kiddo Finance
       <span class="beta-badge">BETA</span>
     </span>
+
     <div class="nav-links">
       <a href="#features">Beneficios</a>
-      <a href="#steps">Como funciona</a>
-      <a href="#audience">Para quien?</a>
+      <a href="#steps">Cómo funciona</a>
+      <a href="#audience">¿Para quién?</a>
     </div>
+
     <div class="nav-actions">
       <a href="login.html" class="btn-nav-outline">Iniciar sesión</a>
-      <a href="register.html" class="btn-nav-solid">Comenzar gratis &rsaquo;</a>
+      <a href="register.html" class="btn-nav-solid">Comenzar gratis →</a>
     </div>
-    <button class="mobile-menu">&#9776;</button>
+
+    <button class="mobile-menu" id="mobileMenuBtn" aria-label="Abrir menú">☰</button>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
-        <span class="hero-tag">&#9733; EDUCACIÓN FINANCIERA</span>
+        <span class="hero-tag">★ EDUCACIÓN FINANCIERA</span>
         <h1>Finanzas inteligentes<br><span class="highlight">para los más pequeños</span></h1>
         <p>Kiddo Finance enseña a niños a gestionar su dinero de bolsillo con herramientas simples: ingresos, gastos, metas de ahorro y logros que motivan el aprendizaje.</p>
         <div class="hero-buttons">
-          <a href="register.html" class="btn-hero-primary">Crear cuenta gratis &rarr;</a>
+          <a href="register.html" class="btn-hero-primary">Crear cuenta gratis →</a>
           <a href="login.html" class="btn-hero-outline">Ya tengo cuenta</a>
         </div>
       </div>
+
       <div class="hero-mockup">
         <div class="mockup-bar">
           <span class="mockup-dot"></span>
@@ -64,24 +865,12 @@
     </div>
   </section>
 
-  <!-- Stats (4 items) -->
+  <!-- Stats -->
   <section class="stats-section">
-    <div class="stat-item">
-      <div class="stat-number">10+</div>
-      <div class="stat-desc">Funcionalidades</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">100%</div>
-      <div class="stat-desc">Privado y Local</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">0€</div>
-      <div class="stat-desc">Costo</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">&infin;</div>
-      <div class="stat-desc">Metas posibles</div>
-    </div>
+    <div class="stat-item"><div class="stat-number">10+</div><div class="stat-desc">Funcionalidades</div></div>
+    <div class="stat-item"><div class="stat-number">100%</div><div class="stat-desc">Privado y local</div></div>
+    <div class="stat-item"><div class="stat-number">$0</div><div class="stat-desc">Costo</div></div>
+    <div class="stat-item"><div class="stat-number">∞</div><div class="stat-desc">Metas posibles</div></div>
   </section>
 
   <!-- Features -->
@@ -91,46 +880,34 @@
     <p>Herramientas diseñadas para que niños y padres trabajen juntos en la educación financiera de una forma entretenida y efectiva.</p>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
         <h3>Control de Ingresos y Gastos</h3>
         <p>Registra cada movimiento de dinero de forma sencilla. Aprende a distinguir entre ingresos y gastos desde pequeño.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
         <h3>Metas de Ahorro</h3>
         <p>Crea objetivos claros y visualiza tu progreso. Alcanzar una meta nunca fue tan motivador para los más pequeños.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
         <h3>Saldo en Tiempo Real</h3>
         <p>Consulta cuánto dinero tienes disponible en cualquier momento. Toma decisiones informadas antes de gastar.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
         <h3>Sistema de Logros</h3>
         <p>Gana medallas y recompensas por buenos hábitos financieros. El aprendizaje se convierte en un juego.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
         <h3>Historial de Movimientos</h3>
         <p>Revisa todo tu historial financiero ordenado. Entiende patrones y mejora tus decisiones con el tiempo.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        </div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Privacidad Segura</h3>
-        <p>Datos guardados localmente en tu dispositivo. Sin correos electrónicos ni información sensible requerida.</p>
+        <p>Datos guardados localmente en tu dispositivo. Sin correos ni información sensible requerida.</p>
       </div>
     </div>
   </section>
@@ -153,7 +930,7 @@
       </div>
       <div class="step-card">
         <div class="step-number">03</div>
-        <h3>Registra tus movimientos</h3>
+        <h3>Registra movimientos</h3>
         <p>Anota cada ingreso y gasto. Categorízalos y añade notas para recordar el motivo.</p>
       </div>
       <div class="step-card">
@@ -166,14 +943,15 @@
 
   <!-- Audience -->
   <section class="audience-section" id="audience">
-    <span class="section-tag">PARA QUIÉN?</span>
+    <span class="section-tag">¿PARA QUIÉN?</span>
     <h2>Pensado para toda la familia</h2>
+    <p style="color:var(--text-secondary);margin-bottom:48px;">Desde los más pequeños hasta los padres, todos tienen un lugar en Kiddo Finance.</p>
     <div class="audience-grid">
       <div class="audience-card">
         <div class="audience-icon">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
-        <h3>Niños (6-12 años)</h3>
+        <h3>Niños (6–12 años)</h3>
         <p>Aprenden el valor del dinero, la diferencia entre necesidad y capricho, y la satisfacción de alcanzar una meta.</p>
         <div class="audience-tags">
           <span class="audience-tag">Registro de gastos</span>
@@ -183,9 +961,9 @@
       </div>
       <div class="audience-card">
         <div class="audience-icon">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>Adolescentes (13-17 años)</h3>
+        <h3>Adolescentes (13–17 años)</h3>
         <p>Gestionan su mesada con autonomía, planifican compras importantes y desarrollan disciplina financiera.</p>
         <div class="audience-tags">
           <span class="audience-tag">Historial</span>
@@ -195,7 +973,7 @@
       </div>
       <div class="audience-card">
         <div class="audience-icon">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h3>Padres y tutores</h3>
         <p>Supervisan el progreso, celebran los logros y enseñan con el ejemplo desde una herramienta sencilla.</p>
@@ -211,12 +989,15 @@
   <!-- CTA -->
   <section class="cta-section">
     <div class="cta-icon">
-      <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/><path d="M2 9.5a.5.5 0 1 0 1 0 .5.5 0 1 0-1 0"/></svg>
+      <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/>
+        <path d="M2 9.5a.5.5 0 1 0 1 0 .5.5 0 1 0-1 0"/>
+      </svg>
     </div>
-    <h2>Empieza hoy mismo &mdash; es completamente gratis</h2>
+    <h2>Empieza hoy — es completamente gratis</h2>
     <p>Sin tarjeta de crédito, sin correo electrónico. Solo un nombre de usuario y ya puedes comenzar a aprender sobre finanzas.</p>
     <div class="cta-buttons">
-      <a href="register.html" class="btn-cta-primary">Crear cuenta gratis &rarr;</a>
+      <a href="register.html" class="btn-cta-primary">Crear cuenta gratis →</a>
       <a href="login.html" class="btn-cta-outline">Iniciar sesión</a>
     </div>
   </section>
@@ -226,7 +1007,10 @@
     <div class="footer-content">
       <div class="footer-brand-col">
         <div class="footer-brand">
-          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/><path d="M2 9.5a.5.5 0 1 0 1 0 .5.5 0 1 0-1 0"/></svg>
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 5c-1.5 0-2.8 1.4-3 2-3.5-1.5-11-.3-11 5 0 1.8 0 3 2 4.5V20h4v-2h3v2h4v-4c1-.5 1.7-1 2-2h2v-4h-2c0-1-.5-1.5-1-2"/>
+            <path d="M2 9.5a.5.5 0 1 0 1 0 .5.5 0 1 0-1 0"/>
+          </svg>
           Kiddo Finance
         </div>
         <p class="footer-tagline">Educación financiera accesible para niños y familias. Simple, privada y efectiva.</p>
@@ -234,7 +1018,7 @@
       <div class="footer-links-col">
         <a href="#features">Beneficios</a>
         <a href="#steps">Cómo funciona</a>
-        <a href="#audience">Para quién?</a>
+        <a href="#audience">¿Para quién?</a>
       </div>
       <div class="footer-links-col">
         <a href="register.html">Registrarse</a>
@@ -242,11 +1026,18 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Kiddo Finance. Todos los derechos reservados.</span>
-      <span class="footer-local"><span class="green-dot"></span> Datos guardados localmente &middot; Sin rastreo</span>
+      <span>© 2026 Kiddo Finance. Todos los derechos reservados.</span>
+      <span class="footer-local"><span class="green-dot"></span> Datos guardados localmente · Sin rastreo</span>
     </div>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script>
+    // Mobile nav toggle
+    const menuBtn    = document.getElementById('mobileMenuBtn');
+    const landingNav = document.getElementById('landingNav');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => landingNav.classList.toggle('nav-open'));
+    }
+  </script>
 </body>
 </html>
