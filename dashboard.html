@@ -3,125 +3,138 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Kiddo Finance</title>
+  <title>Dashboard · Kiddo Finance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="app-layout">
+<div class="app-layout">
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-full">
-          <h2>Kiddo Finance</h2>
-          <span class="wireframe-label">Wireframe</span>
-        </div>
-        <div class="logo-icon">KF</div>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-full">
+        <h2>Kiddo Finance</h2>
+        <span class="tagline">Small steps, big savings</span>
       </div>
+      <div class="logo-icon">KF</div>
+    </div>
 
-      <nav class="sidebar-nav">
-        <a href="dashboard.html" class="active">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
-          <span class="nav-text">Dashboard</span>
-        </a>
-        <a href="perfil.html">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
-          <span class="nav-text">Perfil</span>
-        </a>
-        <a href="movimientos.html">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span>
-          <span class="nav-text">Movimientos</span>
-        </a>
-        <a href="metas.html">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
-          <span class="nav-text">Metas</span>
-        </a>
-        <a href="historial.html">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
-          <span class="nav-text">Historial</span>
-        </a>
-        <a href="logros.html">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>
-          <span class="nav-text">Logros</span>
-        </a>
-      </nav>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="active">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span>
+        <span class="nav-text">Dashboard</span>
+      </a>
+      <a href="perfil.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <span class="nav-text">Perfil</span>
+      </a>
+      <a href="movimientos.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span>
+        <span class="nav-text">Movimientos</span>
+      </a>
+      <a href="metas.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+        <span class="nav-text">Metas</span>
+      </a>
+      <a href="historial.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+        <span class="nav-text">Historial</span>
+      </a>
+      <a href="logros.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+        <span class="nav-text">Logros</span>
+      </a>
+    </nav>
 
-      <div class="sidebar-bottom">
-        <a href="login.html">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
-          <span class="nav-text">Cerrar Sesión</span>
-        </a>
-        <button class="sidebar-toggle" id="sidebarToggle">
-          <span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></span>
-          <span class="toggle-text">Contraer</span>
-        </button>
+    <div class="sidebar-bottom">
+      <a href="login.html">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span>
+        <span class="nav-text">Cerrar Sesión</span>
+      </a>
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></span>
+        <span class="toggle-text">Contraer</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="subtitle">Bienvenido/a, <span id="nombreDashboard">Cargando...</span></p>
       </div>
-    </aside>
+      <a href="perfil.html" class="btn btn-outline btn-sm">Cambiar perfil</a>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <div class="page-header">
-        <div>
-          <h1>Dashboard</h1>
-          <p class="subtitle">Bienvenido/a, Usuario</p>
-        </div>
+    <!-- Balance -->
+    <div class="balance-card">
+      <div>
+        <div class="balance-label">Balance Total</div>
+        <div class="balance-amount" id="balanceAmount">$0</div>
+        <div class="balance-subtitle">Saldo disponible en tu alcancía</div>
       </div>
-
-      <!-- Balance -->
-      <div class="card balance-card">
-        <div>
-          <div class="balance-label">Balance Total</div>
-          <div class="balance-amount">$0.00</div>
-          <div class="balance-note">RF06: Saldo actual del usuario</div>
-        </div>
-        <div class="balance-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-        </div>
+      <div class="balance-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
       </div>
+    </div>
 
-      <!-- Grid principal -->
-      <div class="dashboard-grid">
-        <div class="card dash-card">
-          <h3>Metas de Ahorro</h3>
-          <p>No tienes metas aún</p>
-          <a href="metas.html" class="dash-link">Ver Todas las Metas</a>
-          <div class="rf-note">RF08: Progreso de metas</div>
-        </div>
-        <div class="card dash-card">
-          <h3>Actividad Reciente</h3>
-          <p>No hay movimientos aún</p>
-          <a href="historial.html" class="dash-link">Ver Historial Completo</a>
-          <div class="rf-note">RF09: Historial de movimientos</div>
-        </div>
-      </div>
+    <!-- Grid -->
+    <div class="dashboard-grid">
 
-      <!-- Acciones rápidas -->
-      <div class="action-cards">
-        <a href="movimientos.html" class="card action-card">
-          <div>
-            <h3>Nuevo Movimiento</h3>
-            <p>Registrar ingreso o gasto</p>
+      <!-- Metas -->
+      <div class="card dash-card">
+        <h3>🎯 Metas de Ahorro</h3>
+        <div id="dashboardMetas"></div>
+
+        <div class="global-progress-wrap" style="margin-top:16px;">
+          <div style="font-size:.8125rem;color:var(--text-secondary);font-weight:500;margin-bottom:4px;">Progreso global</div>
+          <div class="global-progress-bar">
+            <div id="globalFill"></div>
           </div>
-          <span class="action-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          </span>
-        </a>
-        <a href="metas.html" class="card action-card">
-          <div>
-            <h3>Nueva Meta</h3>
-            <p>Crear objetivo de ahorro</p>
-          </div>
-          <span class="action-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
-          </span>
-        </a>
+          <div class="global-progress-text" id="globalText">0% completado</div>
+        </div>
+
+        <a href="metas.html" class="dash-link">Ver todas las metas →</a>
       </div>
-    </main>
 
-  </div>
+      <!-- Actividad reciente -->
+      <div class="card dash-card">
+        <h3>⚡ Actividad Reciente</h3>
+        <div id="recentMovements"></div>
+        <a href="historial.html" class="dash-link">Ver historial completo →</a>
+      </div>
 
-  <script src="js/app.js"></script>
+    </div>
+
+    <!-- Acciones rápidas -->
+    <div class="action-cards">
+      <a href="movimientos.html" class="card action-card">
+        <div>
+          <h3>Nuevo Movimiento</h3>
+          <p>Registrar ingreso o gasto</p>
+        </div>
+        <span class="action-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </span>
+      </a>
+      <a href="metas.html" class="card action-card">
+        <div>
+          <h3>Nueva Meta</h3>
+          <p>Crear objetivo de ahorro</p>
+        </div>
+        <span class="action-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </span>
+      </a>
+    </div>
+
+  </main>
+</div>
+<script src="js/app.js"></script>
 </body>
 </html>

@@ -3,59 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Metas de Ahorro - Kiddo Finance</title>
+  <title>Metas · Kiddo Finance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="app-layout">
+<div class="app-layout">
 
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <div class="logo-full"><h2>Kiddo Finance</h2><span class="wireframe-label">Wireframe</span></div>
-        <div class="logo-icon">KF</div>
-      </div>
-      <nav class="sidebar-nav">
-        <a href="dashboard.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span><span class="nav-text">Dashboard</span></a>
-        <a href="perfil.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-text">Perfil</span></a>
-        <a href="movimientos.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span><span class="nav-text">Movimientos</span></a>
-        <a href="metas.html" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="nav-text">Metas</span></a>
-        <a href="historial.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="nav-text">Historial</span></a>
-        <a href="logros.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="nav-text">Logros</span></a>
-      </nav>
-      <div class="sidebar-bottom">
-        <a href="login.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span><span class="nav-text">Cerrar Sesión</span></a>
-        <button class="sidebar-toggle" id="sidebarToggle"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></span><span class="toggle-text">Contraer</span></button>
-      </div>
-    </aside>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-full"><h2>Kiddo Finance</h2><span class="tagline">Small steps, big savings</span></div>
+      <div class="logo-icon">KF</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg></span><span class="nav-text">Dashboard</span></a>
+      <a href="perfil.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span class="nav-text">Perfil</span></a>
+      <a href="movimientos.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span><span class="nav-text">Movimientos</span></a>
+      <a href="metas.html" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="nav-text">Metas</span></a>
+      <a href="historial.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="nav-text">Historial</span></a>
+      <a href="logros.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span><span class="nav-text">Logros</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="login.html"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span><span class="nav-text">Cerrar Sesión</span></a>
+      <button class="sidebar-toggle" id="sidebarToggle"><span class="nav-icon"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></span><span class="toggle-text">Contraer</span></button>
+    </div>
+  </aside>
 
-    <main class="main-content">
-      <div class="page-header">
-        <div>
-          <h1>Metas de Ahorro</h1>
-          <p class="subtitle">RF07 y RF08: Crear y monitorear metas</p>
-        </div>
-        <button class="btn btn-primary">+ Nueva Meta</button>
-      </div>
+  <main class="main-content">
 
-      <div class="card saldo-card">
+    <div class="page-header">
+      <div>
+        <h1>Metas de Ahorro 🎯</h1>
+        <p class="subtitle">Crea y monitorea tus objetivos</p>
+      </div>
+      <button class="btn btn-primary openModalBtn">+ Nueva Meta</button>
+    </div>
+
+    <!-- Saldo disponible -->
+    <div class="card saldo-card">
+      <div>
         <div class="saldo-label">Saldo disponible para metas</div>
-        <div class="saldo-amount">$0.00</div>
+        <div class="saldo-amount" id="balanceAmount">$0</div>
       </div>
-
-      <div class="card">
-        <div class="empty-state">
-          <div class="empty-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-          </div>
-          <p>No tienes metas de ahorro aún</p>
-          <button class="btn btn-primary">Crear tu primera meta</button>
-        </div>
+      <div class="balance-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
       </div>
-    </main>
+    </div>
 
+    <!-- Lista de metas -->
+    <div id="metasContainer" class="metas-grid"></div>
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="metaModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="meta-modal">
+      <button class="close-modal" id="closeModal" aria-label="Cerrar">✕</button>
+      <h2 id="modalTitle">🎯 Nueva Meta</h2>
+      <p>Crea un objetivo divertido para empezar a ahorrar</p>
+
+      <form class="meta-form" id="metaForm" novalidate>
+        <input type="text"   id="metaNombre"    placeholder="Ej: Comprar una bicicleta" maxlength="40" required>
+        <input type="number" id="metaMonto"     placeholder="¿Cuánto quieres ahorrar?" min="1" step="1" required>
+        <input type="date"   id="metaFecha"     required>
+        <select id="metaCategoria" required>
+          <option value="">Selecciona una categoría</option>
+          <option value="Videojuegos">🎮 Videojuegos</option>
+          <option value="Juguetes">🧸 Juguetes</option>
+          <option value="Estudios">📚 Estudios</option>
+          <option value="Regalo">🎁 Regalo</option>
+          <option value="Mascota">🐾 Mascota</option>
+          <option value="Ropa">👟 Ropa</option>
+          <option value="Otro">✨ Otro</option>
+        </select>
+        <button type="submit">Guardar Meta 🚀</button>
+      </form>
+    </div>
   </div>
-  <script src="js/app.js"></script>
+
+</div>
+<script src="js/app.js"></script>
 </body>
 </html>
