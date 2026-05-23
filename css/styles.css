@@ -1519,3 +1519,122 @@ h3 { font-size: 1.125rem; font-weight: 600; }
 
   .auth-card { padding: 20px; }
 }
+/* ================================================================
+   MODAL METAS
+   ================================================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.goal-modal {
+  width: 100%;
+  max-width: 480px;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: modalShow 0.25s ease;
+}
+
+@keyframes modalShow {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  font-size: 1.4rem;
+}
+
+.close-modal {
+  border: none;
+  background: var(--bg);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-modal:hover {
+  background: #E5E7EB;
+}
+
+/* ================================================================
+   CARD META
+   ================================================================ */
+
+.goals-container {
+  display: grid;
+  gap: 16px;
+}
+
+.goal-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.goal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.goal-top h3 {
+  font-size: 1rem;
+}
+
+.goal-progress {
+  margin-top: 16px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: #E5E7EB;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 999px;
+}
+
+.goal-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
