@@ -15,7 +15,7 @@
   --accent: #93C5FD;
   --input-border: #D1D5DB;
   --sidebar-width: 240px;
-  --sidebar-collapsed: 60px;
+  --sidebar-collapsed: 72px;
   --radius: 12px;
   --radius-sm: 8px;
   --shadow: 0 1px 3px rgba(0,0,0,0.06);
@@ -458,7 +458,27 @@ h3 { font-size: 1.125rem; font-weight: 600; }
 }
 
 .sidebar.collapsed .sidebar-bottom .nav-text,
-.sidebar.collapsed .toggle-text { opacity: 0; width: 0; overflow: hidden; }
+.sidebar.collapsed .toggle-text { 
+  opacity: 0; width: 0; overflow: hidden;
+}
+/* ===== ICONOS CENTRADOS EN SIDEBAR COLAPSADO ===== */
+
+.sidebar.collapsed .sidebar-nav a,
+.sidebar.collapsed .sidebar-bottom a,
+.sidebar.collapsed .sidebar-toggle {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.sidebar.collapsed .nav-icon {
+  margin: 0;
+}
+
+.sidebar.collapsed .sidebar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
