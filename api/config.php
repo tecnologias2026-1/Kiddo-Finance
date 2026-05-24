@@ -1,21 +1,18 @@
 <?php
-date_default_timezone_set('America/Bogota');
-
 // Silenciar warnings de sesión si ya se inició
 if (session_status() === PHP_SESSION_NONE) {
     session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
     session_start();
 }
 
-// ── CAMBIAR AL DESPLEGAR ──────────────────────────────────
 // Local (XAMPP):  host=127.0.0.1, user=root, password=''
 // Producción:     copiar datos de InfinityFree → MySQL Database
 // ──────────────────────────────────────────────────────────
 // ── INFINITYFREE ──────────────────────────────────────────
 $db = new PDO(
-    'mysql:host=sql108.infinityfree.com;dbname=if0_42010327_kiddo;charset=utf8mb4',
-    'if0_42010327',
-    'X664nlspljI',
+    'mysql:host=sql304.infinityfree.com;dbname=if0_42010499_kiddo;charset=utf8mb4',
+    'if0_42010499',
+    'gnnYMYAjfVW6F',
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
 );
 // ── LOCAL (XAMPP) ─────────────────────────────────────────
