@@ -15,20 +15,25 @@
       <div class="brand">Kiddo Finance</div>
       <div class="auth-subtitle">Crear Cuenta</div>
 
-      <form>
+      <form id="registerForm">
         <div class="form-group">
-          <label for="usuario">Usuario</label>
-          <input type="text" id="usuario">
+          <label for="username">Usuario</label>
+          <input type="text" id="username" placeholder="Ej: papá de Sofía" minlength="3" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="correo@ejemplo.com" required>
         </div>
         <div class="form-group">
           <label for="password">Contraseña</label>
-          <input type="password" id="password">
+          <input type="password" id="password" minlength="4" required>
         </div>
         <div class="form-group">
           <label for="confirm-password">Confirmar Contraseña</label>
-          <input type="password" id="confirm-password">
+          <input type="password" id="confirm-password" required>
         </div>
-        <button type="button" class="btn btn-primary btn-full" onclick="window.location.href='dashboard.html'">Registrarse</button>
+        <p id="registerError" style="color:var(--danger);font-size:0.875rem;display:none;margin-bottom:12px;"></p>
+        <button type="submit" class="btn btn-primary btn-full" id="registerBtn">Registrarse</button>
       </form>
 
       <div class="auth-footer">
@@ -36,5 +41,53 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (async () => {
+      let API;
+      try {
+        const r = await fetch('api/url.php');
+        API = (await r.json()).api_base;
+      } catch { API = '/kiddo-finance/api'; }
+
+      document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('registerBtn');
+        const err = document.getElementById('registerError');
+        const pass = document.getElementById('password').value;
+        const confirm = document.getElementById('confirm-password').value;
+
+        if (pass !== confirm) {
+          err.textContent = 'Las contraseñas no coinciden';
+          err.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Creando cuenta...';
+
+        try {
+          const res = await fetch(API + '/register.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              username: document.getElementById('username').value.trim(),
+              email: document.getElementById('email').value.trim(),
+              password: pass,
+            }),
+          });
+          const json = await res.json();
+          if (!json.ok) { throw new Error(json.error); }
+          window.location.href = 'dashboard.html';
+        } catch (error) {
+          err.textContent = error.message;
+          err.style.display = 'block';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Registrarse';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

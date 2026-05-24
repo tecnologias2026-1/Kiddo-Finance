@@ -15,16 +15,17 @@
       <div class="brand">Kiddo Finance</div>
       <div class="auth-subtitle">Iniciar Sesión</div>
 
-      <form>
+      <form id="loginForm">
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="correo@ejemplo.com">
+          <label for="username">Usuario o Email</label>
+          <input type="text" id="username" placeholder="usuario o correo@ejemplo.com" required>
         </div>
         <div class="form-group">
           <label for="password">Contraseña</label>
-          <input type="password" id="password">
+          <input type="password" id="password" required>
         </div>
-        <button type="button" class="btn btn-primary btn-full" onclick="window.location.href='dashboard.html'">Iniciar Sesión</button>
+        <p id="loginError" style="color:var(--danger);font-size:0.875rem;display:none;margin-bottom:12px;"></p>
+        <button type="submit" class="btn btn-primary btn-full" id="loginBtn">Iniciar Sesión</button>
       </form>
 
       <div class="auth-footer">
@@ -32,5 +33,43 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (async () => {
+      let API;
+      try {
+        const r = await fetch('api/url.php');
+        API = (await r.json()).api_base;
+      } catch { API = '/kiddo-finance/api'; }
+
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('loginBtn');
+        const err = document.getElementById('loginError');
+        btn.disabled = true;
+        btn.textContent = 'Ingresando...';
+
+        try {
+          const res = await fetch(API + '/login.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              username: document.getElementById('username').value.trim(),
+              password: document.getElementById('password').value,
+            }),
+          });
+          const json = await res.json();
+          if (!json.ok) { throw new Error(json.error); }
+          window.location.href = 'dashboard.html';
+        } catch (error) {
+          err.textContent = error.message;
+          err.style.display = 'block';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Iniciar Sesión';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
